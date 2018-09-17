@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Find easily a doctor and book online an appointment">
+    <meta name="author" content="Ansonika">
+    <title>DoctoWeb - Find easily a doctor and book online an appointment</title>
+
+    <!-- BASE CSS -->
+    <link type="text/css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/menu.css}" rel="stylesheet">
+    <link th:href="@{/css/vendors.css}" rel="stylesheet">
+    <link th:href="@{/css/icon_fonts/css/all_icons_min.css}" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link th:href="@{/css/blog.css}" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="preloader" class="Fixed">
+    <div data-loader="circle-side"></div>
+</div>
+<!-- /Preload-->
+
+<div id="page">
+    <header class="header_sticky">
+        <a href="#menu" class="btn_mobile">
+            <div class="hamburger hamburger--spin" id="hamburger">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+        </a>
+        <!-- /btn_mobile-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div id="logo">
+                        <a href="index.html" title="Findoctor"><img th:src="@{/images/logo.png}" data-retina="true" alt="" width="163" height="36"></a>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-6">
+                    <nav id="menu" class="main-menu">
+                        <ul id="top_access">
+                            <li>
+                                <span>
+                                <form th:action="@{/login}" method="get" id="form1">
+                                    <a href="#" onclick="document.getElementById('form1').submit();"><i
+                                            class="pe-7s-user"></i></a>
+                                </form>
+                                </span>
+                                <ul th:if="${loginUser}">
+                                    <li>
+                                        <div >
+                                            <label style="color:#393b94"><span th:utext="${userName}"></span></label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div >
+                                            <a href="#">Account Details</a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <form th:action="@{/logout}" method="get">
+                                            <button class="btn btn-md btn-primary btn-block" style="cursor:pointer"
+                                                    type="Submit">Logout</button>
+                                        </form>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li>
+                                <span th:unless="${loginUser}">
+                                <form th:action="@{/registration}" method="get" id="form2">
+                                    <a href="#" onclick="document.getElementById('form2').submit();"><i
+                                            class="pe-7s-add-user"></i></a>
+                                </form>
+                                </span>
+                            </li>
+                        </ul>
+
+                        <!--TODO :-->
+                        <!--<nav id="menu" class="main-menu">-->
+
+                        <ul>
+                            <li>
+                                <span>
+                                 <form th:action="@{/}" method="get" id="form0">
+                                    <a href="#" onclick="document.getElementById('form0').submit();">Home</a>
+                                </form>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                     <form th:action="@{/blog}" method="get" id="formblog">
+                                    <a href="#" style="color:black" onclick="document.getElementById('formblog').submit();">Blog</a>
+                                </form>
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <form th:action="@{/booking}" method="get" id="formbooking">
+                                    <a href="#" style="color:black;" onclick="document.getElementById('formbooking').submit();">Book an Appointment</a>
+                                </form>
+                                </span>
+                            </li>
+                            <li>
+                                <span><a href="#0">Subscription</a></span>
+                            </li>
+                            <li><span><a href="#">About us</a></span></li>
+                        </ul>
+                    </nav><!-- /main-menu -->
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+    </header>
+    <!-- /header -->
+
+    <main>
+        <div id="breadcrumb">
+            <div class="container">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Category</a></li>
+                    <li>Page active</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /breadcrumb -->
+
+        <div class="container margin_60">
+            <div class="main_title">
+                <h1>DoctoWeb Blog</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <article class="blog wow fadeIn">
+                        <div class="row no-gutters">
+                            <div class="col-lg-7">
+                                <figure>
+                                    <a href="#"><img th:src="@{/images/blog-1.jpg}" alt=""><div class="preview"><span>Read more</span></div></a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="post_info">
+                                    <small>20 Nov. 2017</small>
+                                    <h3><a href="#">Newly Discovered Human Organ May 'Drive Advances'</a></h3>
+                                    <p>The human body is full of surprises. The latest: A newly identified "organ" that might affect major diseases.
+                                        Using updated technology, U.S. scientists report they've discovered a "highway of moving fluid."</p>
+                                    <ul>
+                                        <li>
+                                            <div class="thumb"><img th:src="@{/images/thumb_blog.jpg}" alt=""></div> Robert Preidt
+                                        </li>
+                                        <li><i class="icon_comment_alt"></i> 13</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- /article -->
+
+                    <article class="blog wow fadeIn">
+                        <div class="row no-gutters">
+                            <div class="col-lg-7">
+                                <figure>
+                                    <a href="#"><img th:src="@{/images/blog-2.jpg}" alt=""><div class="preview"><span>Read more</span></div></a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="post_info">
+                                    <small>10 Dec. 2017</small>
+                                    <h3><a href="#">Anti-Vaccine Movement Affecting Kids With Autism</a></h3>
+                                    <p> Vaccine skeptics appear to be swaying many parents of children with autism to forgo critical childhood vaccines, a new study suggests.
+                                        And the hesitation to fully immunize includes the children's younger siblings, the researchers added.</p>
+                                    <ul>
+                                        <li>
+                                            <div class="thumb"><img th:src="@{/images/thumb_blog.jpg}" alt=""></div> Jessica Hoops
+                                        </li>
+                                        <li><i class="icon_comment_alt"></i> 20</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- /article -->
+
+                    <article class="blog wow fadeIn">
+                        <div class="row no-gutters">
+                            <div class="col-lg-7">
+                                <figure>
+                                    <a href="blog-post.html"><img th:src="@{/images/blog-3.jpg}" alt=""><div class="preview"><span>Read more</span></div></a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="post_info">
+                                    <small>12 Jan. 2018</small>
+                                    <h3><a href="#">Want to Live Longer? Eating Less Might Be the Key</a></h3>
+                                    <p>Putting just a bit less on your dinner plate each day might be key to a longer life, preliminary research suggests.
+                                        People who reduced their caloric intake by just 15 percent over two years experienced a significant decrease in their metabolism, according to a small  clinical trial.</p>
+                                    <ul>
+                                        <li>
+                                            <div class="thumb"><img th:src="@{/images/thumb_blog.jpg}"></div> Jessica Hoops
+                                        </li>
+                                        <li><i class="icon_comment_alt"></i> 15</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- /article -->
+
+                    <article class="blog wow fadeIn">
+                        <div class="row no-gutters">
+                            <div class="col-lg-7">
+                                <figure>
+                                    <a href="#"><img th:src="@{/images/blog-4.jpg}" alt=""><div class="preview"><span>Read more</span></div></a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="post_info">
+                                    <small>4 Feb. 2018</small>
+                                    <h3><a href="#">Ankle Injuries: Causes and Treatments</a></h3>
+                                    <p>Ankle injuries are often thought of as sports injuries. But you don't have to be an athlete or even a "weekend warrior" to turn your ankle and hurt it. Something as simple as walking on an uneven surface can cause a painful, debilitating sprain.</p>
+                                    <ul>
+                                        <li>
+                                            <div class="thumb"><img th:src="@{/images/thumb_blog.jpg}"></div> Jessica Hoops
+                                        </li>
+                                        <li><i class="icon_comment_alt"></i> 20</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- /article -->
+
+                    <nav aria-label="...">
+                        <ul class="pagination pagination-sm">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /pagination -->
+                </div>
+                <!-- /col -->
+
+                <aside class="col-lg-3">
+                    <div class="widget">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" name="search" id="search" class="form-control" placeholder="Search...">
+                            </div>
+                            <button type="submit" id="submit" class="btn_1"> Search</button>
+                        </form>
+                    </div>
+                    <!-- /widget -->
+
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4>Recent Posts</h4>
+                        </div>
+                        <ul class="comments-list">
+                            <li>
+                                <div class="alignleft">
+                                    <a href="#0"><img th:src="@{/images/blog-5.jpg}" alt=""></a>
+                                </div>
+                                <small>11.08.2016</small>
+                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                            </li>
+                            <li>
+                                <div class="alignleft">
+                                    <a href="#0"><img th:src="@{/images/blog-6.jpg}" alt=""></a>
+                                </div>
+                                <small>11.08.2016</small>
+                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                            </li>
+                            <li>
+                                <div class="alignleft">
+                                    <a href="#0"><img th:src="@{/images/blog-4.jpg}" alt=""></a>
+                                </div>
+                                <small>11.08.2016</small>
+                                <h3><a href="#" title="">Verear qualisque ex minimum...</a></h3>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /widget -->
+
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4>Blog Categories</h4>
+                        </div>
+                        <ul class="cats">
+                            <li><a href="#">Treatments <span>(12)</span></a></li>
+                            <li><a href="#">News <span>(21)</span></a></li>
+                            <li><a href="#">Events <span>(44)</span></a></li>
+                            <li><a href="#">New treatments <span>(09)</span></a></li>
+                            <li><a href="#">Focus in the lab <span>(31)</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- /widget -->
+
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h4>Popular Tags</h4>
+                        </div>
+                        <div class="tags">
+                            <a href="#">Medicine</a>
+                            <a href="#">Treatments</a>
+                            <a href="#">Events</a>
+                            <a href="#">Specialist</a>
+                            <a href="#">Pills</a>
+                            <a href="#">Cancer</a>
+                        </div>
+                    </div>
+                    <!-- /widget -->
+
+                </aside>
+                <!-- /aside -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </main>
+    <!-- /main -->
+
+    <footer>
+        <div class="container margin_60_35">
+            <div class="row">
+                <div class="col-lg-3 col-md-12">
+                    <p>
+                        <a href="index.html" title="Findoctor">
+                            <img th:src="@{/images/logo.png}" data-retina="true" alt="" width="163" height="36" class="img-fluid">
+                        </a>
+                    </p>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h5>About</h5>
+                    <ul class="links">
+                        <li><a href="#0">About us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#0">FAQ</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h5>Useful links</h5>
+                    <ul class="links">
+                        <li><a href="#0">Doctors</a></li>
+                        <li><a href="#0">Clinics</a></li>
+                        <li><a href="#0">Specialization</a></li>
+                        <li><a href="#0">Join as a Doctor</a></li>
+                        <li><a href="#0">Download App</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <h5>Contact with Us</h5>
+                    <ul class="contacts">
+                        <li><a href="tel://61280932400"><i class="icon_mobile"></i> + 61 23 8093 3400</a></li>
+                        <li><a href="/cdn-cgi/l/email-protection#50393e363f1036393e343f33243f227e333f3d"><i class="icon_mail_alt"></i> <span class="__cf_email__" data-cfemail="d0b8b5bca090b6b9beb4bfb3a4bfa2feb3bfbd">[email&#160;protected]</span></a></li>
+                    </ul>
+                    <div class="follow_us">
+                        <h5>Follow us</h5>
+                        <ul>
+                            <li><a href="#0"><i class="social_facebook"></i></a></li>
+                            <li><a href="#0"><i class="social_twitter"></i></a></li>
+                            <li><a href="#0"><i class="social_linkedin"></i></a></li>
+                            <li><a href="#0"><i class="social_instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--/row-->
+            <hr>
+            <div class="row">
+                <div class="col-md-8">
+                    <ul id="additional_links">
+                        <li><a href="#0">Terms and conditions</a></li>
+                        <li><a href="#0">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <div id="copy">© 2017 Findoctor</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/footer-->
+</div>
+<!-- page -->
+
+<div id="toTop"></div>
+<!-- Back to top button -->
+
+<!-- COMMON SCRIPTS -->
+<script data-cfasync="false" th:src="@{/js/email-decode.min.js}"></script>
+<script th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script th:src="@{/js/common_scripts.min.js}"></script>
+<script th:src="@{/js/functions.js}"></script>
+</body>
+</html>
